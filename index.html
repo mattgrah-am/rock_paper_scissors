@@ -7,26 +7,113 @@
   </head>
   <body>
     <script>
-      // create a function (computerPlay) that randomly selects either Rock, Paper or Scissors
-      //look for a random select function
+      //create a function (playerplay) that prompts user to select Rock, Paper or Scissors
+      //error check to ensure they select either rock / paper / or scissors
+      function playerPlay() {
+        let play = prompt("Please select between Rock, Paper, Scissors:");
+        play = play.toLowerCase();
+
+        if (
+          play.includes("rock") ||
+          play.includes("paper") ||
+          play.includes("scissors")
+        ) {
+          alert(`You have selected ${play}`);
+        } else alert("You have made an incorrect selection.");
+        return play;
+      }
+      // create a variable (computerPlay) that randomly selects either Rock, Paper or Scissors
       function computerPlay() {
         let rockPaperScissors = ["rock", "paper", "scissors"];
-
-        let randomItem =
+        let i =
           rockPaperScissors[
             Math.floor(Math.random() * rockPaperScissors.length)
           ];
+        return i;
+        alert(`computer picked ${computerSelection}`);
       }
-      // create a function (computerPlay) that randomly selects either Rock, Paper or Scissors
-      //look for a random select function
 
-      //create a function (playerSelection) that prompts user to select Rock, Paper or Scissors
-      //error check to ensure they select either rock / paper / or scissors
-
-      //create a funtion (playRound) that compares (playerSelection) with (computerSelection)
+      //create a function (playRound) that compares (playerSelection) with (computerSelection)
       //consider rock > scissors / scissers > paper / paper > rock
-
-      //Return results in an alert
+      function playRound(playerSelection, computerSelection) {
+        if (playerSelection === computerSelection) {
+          alert("It's a tie!");
+          alert(
+            `Players Score: ${playerScore} / Computer Score: ${computerScore}`
+          );
+        }
+        //outcomes if player selects rock
+        if (playerSelection == "rock") {
+          if (computerSelection == "scissors") {
+            alert("You win! Rock beats Scissors!");
+            ++playerScore;
+            alert(
+              `Players Score: ${playerScore} / Computer Score: ${computerScore}`
+            );
+          } else if (computerSelection == "paper") {
+            alert("You lose! Paper beats Rock!");
+            ++computerScore;
+            alert(
+              `Players Score: ${playerScore} / Computer Score: ${computerScore}`
+            );
+          }
+        }
+        //outcomes if player selects Paper
+        if (playerSelection === "paper") {
+          if (computerSelection === "rock") {
+            alert("You win! Paper beats Rock!");
+            ++playerScore;
+            alert(
+              `Players Score: ${playerScore} / Computer Score: ${computerScore}`
+            );
+          } else if (computerSelection === "scissors") {
+            alert("You lose! Scissors beats Paper!");
+            ++computerScore;
+            alert(
+              `Players Score: ${playerScore} / Computer Score: ${computerScore}`
+            );
+          }
+        }
+        //outcomes if player selects Scissors
+        if (playerSelection === "scissors") {
+          if (computerSelection === "paper") {
+            alert("You win! Scissors beats paper!");
+            ++playerScore;
+            alert(
+              `Players Score: ${playerScore} / Computer Score: ${computerScore}`
+            );
+          } else if (computerSelection === "rock") {
+            alert("You lose! Rock beats Scissors!");
+            ++computerScore;
+            alert(
+              `Players Score: ${playerScore} / Computer Score: ${computerScore}`
+            );
+          }
+        }
+      }
+      //Variables to keep score
+      let playerScore = 0;
+      let computerScore = 0;
+      //Game 1
+      let playerSelection = playerPlay();
+      let computerSelection = computerPlay();
+      console.log(playRound(playerSelection, computerSelection));
+      //Game 2
+      playerSelection = playerPlay();
+      computerSelection = computerPlay();
+      console.log(playRound(playerSelection, computerSelection));
+      //Game 3
+      playerSelection = playerPlay();
+      computerSelection = computerPlay();
+      console.log(playRound(playerSelection, computerSelection));
+      //Game 4
+      playerSelection = playerPlay();
+      computerSelection = computerPlay();
+      console.log(playRound(playerSelection, computerSelection));
+      //Game 5
+      playerSelection = playerPlay();
+      computerSelection = computerPlay();
+      console.log(playRound(playerSelection, computerSelection));
     </script>
   </body>
 </html>
